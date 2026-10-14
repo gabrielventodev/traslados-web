@@ -6,7 +6,7 @@ import Board from '../components/Board.astro';
 import BookingForm from '../components/BookingForm.astro';
 import Faq from '../components/Faq.astro';
 import FlightPath from '../components/FlightPath.astro';
-import { SITE_URL, waLink } from '../data/site.js';
+import { SITE_URL, url, waLink } from '../data/site.js';
 import vans from '../assets/vans-avion.jpg';
 import rampa from '../assets/rampa-silla.jpg';
 import rampa2 from '../assets/rampa-silla-2.jpg';
@@ -121,7 +121,7 @@ const services = {
           <div class="card-body">
             <h3>Traslado a Ezeiza</h3>
             <p>Viajes al Aeropuerto Internacional Ministro Pistarini desde Capital y Gran Buenos Aires, ideal para vuelos internacionales con mucho equipaje.</p>
-            <a href="/traslados-aeropuerto-ezeiza/">Ver traslados a Ezeiza <span class="arr" aria-hidden="true"><Icon name="arrow-right" /></span></a>
+            <a href={url('/traslados-aeropuerto-ezeiza/')}>Ver traslados a Ezeiza <span class="arr" aria-hidden="true"><Icon name="arrow-right" /></span></a>
           </div>
         </article>
         <article class="card reveal">
@@ -132,7 +132,7 @@ const services = {
           <div class="card-body">
             <h3>Traslado a Aeroparque</h3>
             <p>Viajes rápidos a Aeroparque Jorge Newbery para vuelos de cabotaje y regionales, y conexión directa con Ezeiza.</p>
-            <a href="/traslados-aeroparque/">Ver traslados a Aeroparque <span class="arr" aria-hidden="true"><Icon name="arrow-right" /></span></a>
+            <a href={url('/traslados-aeroparque/')}>Ver traslados a Aeroparque <span class="arr" aria-hidden="true"><Icon name="arrow-right" /></span></a>
           </div>
         </article>
         <article class="card reveal">
@@ -143,7 +143,7 @@ const services = {
           <div class="card-body">
             <h3>Traslado en silla de ruedas</h3>
             <p>La misma van tiene rampa para personas con movilidad reducida. Subís en tu silla, con acompañante y equipaje.</p>
-            <a href="/traslados-silla-de-ruedas/">Ver traslados accesibles <span class="arr" aria-hidden="true"><Icon name="arrow-right" /></span></a>
+            <a href={url('/traslados-silla-de-ruedas/')}>Ver traslados accesibles <span class="arr" aria-hidden="true"><Icon name="arrow-right" /></span></a>
           </div>
         </article>
       </div>

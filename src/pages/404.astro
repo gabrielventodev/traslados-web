@@ -1,10 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import { url } from '../data/site.js';
 ---
 <Base title="Página no encontrada | Traslados Aeropuerto" description="La página que buscás no existe.">
   <section class="hero"><div class="wrap hero-copy">
     <h1>Esta página no existe</h1>
     <p class="lead">Puede que el enlace esté mal escrito. Volvé al inicio o escribinos por WhatsApp.</p>
-    <div class="hero-ctas"><a class="btn btn-ghost" href="/">Volver al inicio</a></div>
+    <div class="hero-ctas"><a class="btn btn-ghost" href={url('/')}>Volver al inicio</a></div>
   </div></section>
 </Base>

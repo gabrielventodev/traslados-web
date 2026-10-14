@@ -2,6 +2,6 @@
 
 > Servicio de traslados privados en Buenos Aires, Argentina, desde y hacia el Aeropuerto Internacional de Ezeiza (EZE) y Aeroparque Jorge Newbery (AEP). Van espaciosa para pasajeros con mucho equipaje que también tiene rampa para personas en silla de ruedas. Reservas por WhatsApp al +54 9 11 6621 1059. Lema: "Responsabilidad, llega a tiempo".
 
-- [Traslados a Ezeiza](https://www.trasladosaeropuerto.com.ar/traslados-aeropuerto-ezeiza/): traslado puerta a puerta al aeropuerto internacional.
-- [Traslados a Aeroparque](https://www.trasladosaeropuerto.com.ar/traslados-aeroparque/): vuelos de cabotaje y conexión Ezeiza–Aeroparque.
-- [Traslados en silla de ruedas](https://www.trasladosaeropuerto.com.ar/traslados-silla-de-ruedas/): la misma van, con rampa para personas con movilidad reducida.
+- [Traslados a Ezeiza](https://gabrielventodev.github.io/traslados-web/traslados-aeropuerto-ezeiza/): traslado puerta a puerta al aeropuerto internacional.
+- [Traslados a Aeroparque](https://gabrielventodev.github.io/traslados-web/traslados-aeroparque/): vuelos de cabotaje y conexión Ezeiza–Aeroparque.
+- [Traslados en silla de ruedas](https://gabrielventodev.github.io/traslados-web/traslados-silla-de-ruedas/): la misma van, con rampa para personas con movilidad reducida.

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.trasladosaeropuerto.com.ar/sitemap-index.xml
+Sitemap: https://gabrielventodev.github.io/traslados-web/sitemap-index.xml

@@ -6,7 +6,7 @@ import Icon from '../components/Icon.astro';
 import BookingForm from '../components/BookingForm.astro';
 import Faq from '../components/Faq.astro';
 import FlightPath from '../components/FlightPath.astro';
-import { SITE_URL, waLink } from '../data/site.js';
+import { SITE_URL, url, waLink } from '../data/site.js';
 
 interface Props {
   title: string;
@@ -40,7 +40,7 @@ const service = {
     <FlightPath />
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <nav class="crumbs" aria-label="Migas de pan"><ol><li><a href="/">Inicio</a></li><li aria-current="page">{p.crumb}</li></ol></nav>
+        <nav class="crumbs" aria-label="Migas de pan"><ol><li><a href={url('/')}>Inicio</a></li><li aria-current="page">{p.crumb}</li></ol></nav>
         <span class="eyebrow">{p.eyebrow}</span>
         <h1>{p.h1}</h1>
         <p class="lead">{p.intro}</p>

@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { Image } from 'astro:assets';
 import Icon from '../components/Icon.astro';
 import logo from '../assets/logo.jpg';
-import { BUSINESS, SITE_URL, waLink } from '../data/site.js';
+import { BUSINESS, SITE_URL, BASE, url, waLink } from '../data/site.js';
 
 interface Crumb { name: string; path: string; }
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
   crumbs?: Crumb[];
   ogImage?: string;
 }
-const { title, description, schema = [], crumbs = [], ogImage = '/og-traslados-aeropuerto.jpg' } = Astro.props;
+const { title, description, schema = [], crumbs = [], ogImage = url('/og-traslados-aeropuerto.jpg') } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE_URL).href;
 const ogUrl = new URL(ogImage, SITE_URL).href;
 
@@ -43,12 +43,12 @@ const business = {
 const breadcrumbSchema = crumbs.length ? {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  itemListElement: [{ name: 'Inicio', path: '/' }, ...crumbs].map((c, i) => ({
+  itemListElement: [{ name: 'Inicio', path: url('/') }, ...crumbs].map((c, i) => ({
     '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.path, SITE_URL).href,
   })),
 } : null;
 const allSchema = [business, ...(breadcrumbSchema ? [breadcrumbSchema] : []), ...schema];
-const path = Astro.url.pathname;
+const path = Astro.url.pathname.slice(BASE.length) || '/';
 ---
 <!doctype html>
 <html lang="es-AR">
@@ -63,12 +63,12 @@ const path = Astro.url.pathname;
   <meta name="theme-color" content="#0f2f6e" />
   <meta name="geo.region" content="AR-C" />
   <meta name="geo.placename" content="Buenos Aires" />
-  <link rel="preload" href="/fonts/montserrat-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="preload" href={url('/fonts/montserrat-latin-wght-italic.woff2')} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={url('/fonts/figtree-latin-wght-normal.woff2')} as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href={url('/favicon-48.png')} sizes="48x48" type="image/png" />
+  <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
+  <link rel="manifest" href={url('/site.webmanifest')} />
+  <link rel="sitemap" href={url('/sitemap-index.xml')} />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_AR" />
@@ -90,15 +90,15 @@ const path = Astro.url.pathname;
   <a class="sr-only" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="/" aria-label={`${BUSINESS.name}, ir al inicio`}>
+      <a class="brand" href={url('/')} aria-label={`${BUSINESS.name}, ir al inicio`}>
         <Image src={logo} alt="" width={92} height={92} loading="eager" />
         <span><strong>Traslados <span>Aeropuerto</span></strong><small>{BUSINESS.slogan}</small></span>
       </a>
       <nav class="nav" aria-label="Principal">
-        <a href="/traslados-aeropuerto-ezeiza/" aria-current={path.startsWith('/traslados-aeropuerto-ezeiza') ? 'page' : undefined}>Ezeiza</a>
-        <a href="/traslados-aeroparque/" aria-current={path.startsWith('/traslados-aeroparque') ? 'page' : undefined}>Aeroparque</a>
-        <a href="/traslados-silla-de-ruedas/" aria-current={path.startsWith('/traslados-silla-de-ruedas') ? 'page' : undefined}>Silla de ruedas</a>
-        <a href={path === '/' ? '#reservar' : '/#reservar'}>Cotizar</a>
+        <a href={url('/traslados-aeropuerto-ezeiza/')} aria-current={path.startsWith('/traslados-aeropuerto-ezeiza') ? 'page' : undefined}>Ezeiza</a>
+        <a href={url('/traslados-aeroparque/')} aria-current={path.startsWith('/traslados-aeroparque') ? 'page' : undefined}>Aeroparque</a>
+        <a href={url('/traslados-silla-de-ruedas/')} aria-current={path.startsWith('/traslados-silla-de-ruedas') ? 'page' : undefined}>Silla de ruedas</a>
+        <a href={path === '/' ? '#reservar' : url('/#reservar')}>Cotizar</a>
         <a class="btn btn-wa" href={waLink()} rel="noopener" target="_blank"><Icon name="whatsapp" /><span>{BUSINESS.phoneDisplay}</span></a>
       </nav>
     </div>
@@ -131,16 +131,16 @@ const path = Astro.url.pathname;
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <a class="brand" href="/"><Image src={logo} alt="" width={92} height={92} /><span><strong>Traslados <span>Aeropuerto</span></strong><small>{BUSINESS.slogan}</small></span></a>
+          <a class="brand" href={url('/')}><Image src={logo} alt="" width={92} height={92} /><span><strong>Traslados <span>Aeropuerto</span></strong><small>{BUSINESS.slogan}</small></span></a>
           <p style="margin-top:14px">Traslados privados desde y hacia el Aeropuerto de Ezeiza y Aeroparque, en una van espaciosa que además tiene rampa para personas en silla de ruedas.</p>
         </div>
         <div>
           <h3>Servicios</h3>
           <ul>
-            <li><a href="/traslados-aeropuerto-ezeiza/">Traslados a Ezeiza</a></li>
-            <li><a href="/traslados-aeroparque/">Traslados a Aeroparque</a></li>
-            <li><a href="/traslados-silla-de-ruedas/">Traslados en silla de ruedas</a></li>
-            <li><a href={path === '/' ? '#preguntas' : '/#preguntas'}>Preguntas frecuentes</a></li>
+            <li><a href={url('/traslados-aeropuerto-ezeiza/')}>Traslados a Ezeiza</a></li>
+            <li><a href={url('/traslados-aeroparque/')}>Traslados a Aeroparque</a></li>
+            <li><a href={url('/traslados-silla-de-ruedas/')}>Traslados en silla de ruedas</a></li>
+            <li><a href={path === '/' ? '#preguntas' : url('/#preguntas')}>Preguntas frecuentes</a></li>
           </ul>
         </div>
         <div>
