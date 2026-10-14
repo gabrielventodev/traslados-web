@@ -10,7 +10,7 @@ import vans from '../assets/vans-avion.jpg';
 import rampa from '../assets/rampa-silla.jpg';
 import vanFrente from '../assets/van-frente.jpg';
 import vanRampa from '../assets/van-rampa-trasera.jpg';
-import LuggageArt from '../components/LuggageArt.astro';
+import equipaje from '../assets/equipaje.jpg';
 
 const faqs = [
   { q: '¿Cuánto cuesta un traslado a Ezeiza o Aeroparque?', a: 'Depende del punto de partida, el horario y la cantidad de pasajeros. Escribinos por WhatsApp con la dirección y la fecha y te pasamos el precio cerrado antes de confirmar.' },
@@ -141,7 +141,7 @@ const services = {
   <section class="section" aria-labelledby="van-title">
     <div class="wrap split reverse">
       <div class="split-media">
-        <LuggageArt />
+        <Image src={equipaje} alt="Valijas de colores listas para el viaje en la playa" widths={[428]} sizes="428px" class="native" />
       </div>
       <div class="split-copy">
         <span class="eyebrow">Van espaciosa</span>

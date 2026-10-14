@@ -98,7 +98,7 @@ const path = Astro.url.pathname;
         <a href="/traslados-aeropuerto-ezeiza/" aria-current={path.startsWith('/traslados-aeropuerto-ezeiza') ? 'page' : undefined}>Ezeiza</a>
         <a href="/traslados-aeroparque/" aria-current={path.startsWith('/traslados-aeroparque') ? 'page' : undefined}>Aeroparque</a>
         <a href="/traslados-silla-de-ruedas/" aria-current={path.startsWith('/traslados-silla-de-ruedas') ? 'page' : undefined}>Silla de ruedas</a>
-        <a href="/#reservar">Cotizar</a>
+        <a href={path === '/' ? '#reservar' : '/#reservar'}>Cotizar</a>
         <a class="btn btn-wa" href={waLink()} rel="noopener" target="_blank"><Icon name="whatsapp" /><span>{BUSINESS.phoneDisplay}</span></a>
       </nav>
     </div>
@@ -131,7 +131,7 @@ const path = Astro.url.pathname;
             <li><a href="/traslados-aeropuerto-ezeiza/">Traslados a Ezeiza</a></li>
             <li><a href="/traslados-aeroparque/">Traslados a Aeroparque</a></li>
             <li><a href="/traslados-silla-de-ruedas/">Traslados en silla de ruedas</a></li>
-            <li><a href="/#preguntas">Preguntas frecuentes</a></li>
+            <li><a href={path === '/' ? '#preguntas' : '/#preguntas'}>Preguntas frecuentes</a></li>
           </ul>
         </div>
         <div>
@@ -151,5 +151,31 @@ const path = Astro.url.pathname;
   </footer>
 
   <a class="wa-float" href={waLink()} rel="noopener" target="_blank" aria-label={`Escribir por WhatsApp al ${BUSINESS.phoneDisplay}`}><Icon name="whatsapp" /></a>
+  <script is:inline>
+  (function () {
+    // Navegación fiable: al cambiar de página arranca arriba, y los enlaces a secciones bajan hasta ellas.
+    try { history.scrollRestoration = 'manual'; } catch (e) {}
+    function go(id) {
+      var el = id && document.getElementById(id);
+      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return true; }
+      return false;
+    }
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (!a || a.target === '_blank') return;
+      var url = new URL(a.getAttribute('href'), location.href);
+      var id = url.hash.slice(1);
+      if (!id) return;
+      if (url.pathname === location.pathname) { if (go(id)) e.preventDefault(); }
+      else { try { sessionStorage.setItem('ir-a', id); } catch (err) {} }
+    });
+    function start() {
+      var id = location.hash.slice(1);
+      try { id = id || sessionStorage.getItem('ir-a'); sessionStorage.removeItem('ir-a'); } catch (err) {}
+      if (!go(id)) window.scrollTo(0, 0);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+  })();
+  </script>
 </body>
 </html>
