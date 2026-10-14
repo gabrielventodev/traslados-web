@@ -1,0 +1,32 @@
+---
+import Landing from '../layouts/Landing.astro';
+import img from '../assets/van-frente.jpg';
+const faqs = [
+  { q: '¿Cuánto se tarda en llegar a Aeroparque?', a: 'Aeroparque está sobre la Costanera Norte, a unos 7 km del Obelisco. El viaje desde el centro dura entre 15 y 25 minutos según el tránsito.' },
+  { q: '¿Hacen el traslado de Ezeiza a Aeroparque?', a: 'Sí. Si llegás en un vuelo internacional a Ezeiza y seguís en un vuelo de cabotaje desde Aeroparque, te llevamos directo entre los dos aeropuertos. Son unos 45 km.' },
+  { q: '¿Con cuánta anticipación salgo para un vuelo de cabotaje?', a: 'Para vuelos nacionales se recomienda llegar unas 2 horas antes. Te sugerimos la hora de retiro según tu vuelo y tu dirección.' },
+];
+---
+<Landing
+  title="Traslado a Aeroparque Jorge Newbery | Van para equipaje"
+  description="Traslado privado a Aeroparque (AEP) desde Capital y GBA, y conexión Ezeiza–Aeroparque. Van espaciosa y unidad con rampa para silla de ruedas. WhatsApp 11 6621 1059."
+  crumb="Traslados a Aeroparque"
+  eyebrow="Aeroparque Internacional Jorge Newbery · AEP"
+  h1="Traslado a Aeroparque Jorge Newbery"
+  intro="Viajes rápidos a Aeroparque para tus vuelos de cabotaje y regionales. Te buscamos donde estés y también te llevamos de Ezeiza a Aeroparque si tenés una conexión."
+  image={img}
+  imageAlt="Van plateada para traslados a Aeroparque"
+  facts={[{ label: 'Distancia desde el Obelisco', value: '≈ 7 km' }, { label: 'Tiempo de viaje', value: '15 a 25 min' }, { label: 'Conexión con Ezeiza', value: '≈ 45 km' }]}
+  faqs={faqs}
+  waText="Hola! Quiero cotizar un traslado a Aeroparque."
+  preset="aeroparque"
+  serviceName="Traslado al Aeroparque Jorge Newbery"
+>
+  <h2>Transfer a Aeroparque desde Capital y Gran Buenos Aires</h2>
+  <p>Aeroparque Jorge Newbery es el aeropuerto de la Ciudad de Buenos Aires, junto al Río de la Plata en la Costanera Norte. Desde ahí salen la mayoría de los vuelos de cabotaje hacia Bariloche, Mendoza, Córdoba, Iguazú, Salta y el resto del país, además de vuelos regionales.</p>
+  <p>Nuestro traslado a Aeroparque te lleva desde tu casa, oficina u hotel hasta la puerta de la terminal, y te busca en arribos cuando volvés.</p>
+  <h2>Conexión entre Ezeiza y Aeroparque</h2>
+  <p>Muchos viajeros llegan del exterior a Ezeiza y siguen viaje desde Aeroparque. Te esperamos en arribos de Ezeiza y te llevamos directo a Aeroparque, con todo tu equipaje en la misma van.</p>
+  <h2>Viajes accesibles</h2>
+  <p>Si viajás con una persona en silla de ruedas, pedí la van con rampa. Sube sin dejar su silla y viaja junto a sus acompañantes.</p>
+</Landing>

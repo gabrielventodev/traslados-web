@@ -1,0 +1,186 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Board from '../components/Board.astro';
+import BookingForm from '../components/BookingForm.astro';
+import Faq from '../components/Faq.astro';
+import { SITE_URL, waLink } from '../data/site.js';
+import vans from '../assets/vans-avion.jpg';
+import rampa from '../assets/rampa-silla.jpg';
+import vanFrente from '../assets/van-frente.jpg';
+import vanRampa from '../assets/van-rampa-trasera.jpg';
+import LuggageArt from '../components/LuggageArt.astro';
+
+const faqs = [
+  { q: '¿Cuánto cuesta un traslado a Ezeiza o Aeroparque?', a: 'Depende del punto de partida, el horario y la cantidad de pasajeros. Escribinos por WhatsApp con la dirección y la fecha y te pasamos el precio cerrado antes de confirmar.' },
+  { q: '¿Tienen vehículo para personas en silla de ruedas?', a: 'Sí. Contamos con una van adaptada con rampa, para que la persona suba sin dejar la silla de ruedas, y espacio para un acompañante y el equipaje.' },
+  { q: '¿Cuántas valijas entran en la van?', a: 'La van es espaciosa y está pensada para pasajeros con mucho equipaje. Contanos cuántas valijas llevan al reservar y te confirmamos que entra todo.' },
+  { q: '¿Qué pasa si mi vuelo se atrasa?', a: 'Pasanos tu número de vuelo al reservar. Coordinamos el horario de retiro según la llegada real del vuelo para que no tengas que preocuparte.' },
+  { q: '¿Con cuánta anticipación tengo que reservar?', a: 'Lo ideal es reservar con al menos 24 horas de anticipación, sobre todo si necesitás la van con rampa. Para viajes en el día consultanos por WhatsApp.' },
+  { q: '¿Hacen traslados entre Ezeiza y Aeroparque?', a: 'Sí, hacemos la conexión entre ambos aeropuertos para quienes tienen un vuelo de cabotaje después de un vuelo internacional, y viceversa.' },
+];
+
+const services = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Traslados al aeropuerto',
+  name: 'Traslados al Aeropuerto de Ezeiza y Aeroparque',
+  provider: { '@id': `${SITE_URL}/#negocio` },
+  areaServed: 'Buenos Aires, Argentina',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de traslado',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Traslado al Aeropuerto de Ezeiza (EZE)' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Traslado a Aeroparque Jorge Newbery (AEP)' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Traslado para personas en silla de ruedas con van con rampa' } },
+    ],
+  },
+};
+---
+<Base
+  title="Traslados Aeropuerto Ezeiza y Aeroparque | Van y silla de ruedas"
+  description="Traslados privados a Ezeiza y Aeroparque en van espaciosa para mucho equipaje. Unidad con rampa para personas en silla de ruedas. Reservá por WhatsApp 11 6621 1059."
+  schema={[services]}
+>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Buenos Aires · Ezeiza · Aeroparque</span>
+        <h1>Traslados al Aeropuerto <em>Ezeiza</em> y <em>Aeroparque</em></h1>
+        <p class="lead">Te llevamos y te buscamos en una van espaciosa, con lugar para todas tus valijas. Y si viajás en silla de ruedas, tenemos una unidad con rampa para que subas sin bajarte de ella.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-wa" href={waLink()} rel="noopener" target="_blank"><Icon name="whatsapp" /> Reservar por WhatsApp</a>
+          <a class="btn btn-ghost" href="#reservar">Cotizar mi viaje</a>
+        </div>
+        <ul class="chips" aria-label="Lo que incluye">
+          <li><Icon name="luggage" /> Van para mucho equipaje</li>
+          <li><Icon name="wheelchair" /> Rampa para silla de ruedas</li>
+          <li><Icon name="clock" /> Llegás a tiempo</li>
+        </ul>
+      </div>
+      <div class="hero-media">
+        <div class="photo">
+          <Image src={vans} alt="Dos vans plateadas de Traslados Aeropuerto estacionadas frente a un avión en la pista" widths={[480, 853]} sizes="(max-width: 860px) 100vw, 560px" loading="eager" fetchpriority="high" />
+        </div>
+        <div class="pass" aria-hidden="true">
+          <span><small>Desde</small><b>EZE</b></span>
+          <Icon name="plane" />
+          <span class="r"><small>Hasta</small><b>AEP</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="board-band section" aria-labelledby="rutas-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--amber)">Rutas frecuentes</span>
+        <h2 id="rutas-title">Tablero de traslados</h2>
+        <p class="lead">Viajes puerta a puerta entre los dos aeropuertos de Buenos Aires, Capital Federal y el Gran Buenos Aires.</p>
+      </div>
+      <Board />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="servicios-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Servicios</span>
+        <h2 id="servicios-title">Elegí tu traslado</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <Image src={vanFrente} alt="Van plateada para traslados al Aeropuerto de Ezeiza" widths={[400, 433]} sizes="(max-width: 900px) 100vw, 370px" />
+          <div class="card-body">
+            <h3>Traslado a Ezeiza</h3>
+            <p>Viajes al Aeropuerto Internacional Ministro Pistarini desde Capital y Gran Buenos Aires, ideal para vuelos internacionales con mucho equipaje.</p>
+            <a href="/traslados-aeropuerto-ezeiza/">Ver traslados a Ezeiza →</a>
+          </div>
+        </article>
+        <article class="card">
+          <Image src={vans} alt="Vans de traslado junto a un avión en Aeroparque" widths={[480, 853]} sizes="(max-width: 900px) 100vw, 370px" />
+          <div class="card-body">
+            <h3>Traslado a Aeroparque</h3>
+            <p>Viajes rápidos a Aeroparque Jorge Newbery para vuelos de cabotaje y regionales, y conexión directa con Ezeiza.</p>
+            <a href="/traslados-aeroparque/">Ver traslados a Aeroparque →</a>
+          </div>
+        </article>
+        <article class="card">
+          <Image src={vanRampa} alt="Pasajero en silla de ruedas dentro de la van adaptada con rampa" widths={[430]} sizes="(max-width: 900px) 100vw, 370px" />
+          <div class="card-body">
+            <h3>Traslado en silla de ruedas</h3>
+            <p>Van adaptada con rampa para personas con movilidad reducida. Subís en tu silla, con acompañante y equipaje.</p>
+            <a href="/traslados-silla-de-ruedas/">Ver traslados accesibles →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="access-band section" aria-labelledby="accesible-title">
+    <div class="wrap split">
+      <div class="split-media">
+        <Image src={rampa} alt="Chofer ayudando a un pasajero en silla de ruedas a subir a la van por la rampa" widths={[553]} sizes="(max-width: 860px) 100vw, 540px" />
+      </div>
+      <div class="split-copy">
+        <span class="isa" aria-hidden="true"><Icon name="wheelchair" /></span>
+        <h2 id="accesible-title">Adaptado para personas con discapacidad</h2>
+        <p class="lead">Viajar al aeropuerto en silla de ruedas no tiene que ser complicado. Nuestra van tiene rampa y espacio para que la persona viaje cómoda y segura.</p>
+        <ul class="ticks">
+          <li><Icon name="check" /><p><b>Rampa de acceso.</b> <span>La persona sube y baja sin dejar su silla de ruedas.</span></p></li>
+          <li><Icon name="check" /><p><b>Ayuda del chofer.</b> <span>Te asistimos al subir, al bajar y con el equipaje.</span></p></li>
+          <li><Icon name="check" /><p><b>Lugar para acompañantes.</b> <span>La familia viaja junta en el mismo vehículo.</span></p></li>
+        </ul>
+        <div><a class="btn btn-wa" href={waLink('Hola! Necesito un traslado al aeropuerto para una persona en silla de ruedas.')} rel="noopener" target="_blank"><Icon name="whatsapp" /> Consultar traslado accesible</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="van-title">
+    <div class="wrap split reverse">
+      <div class="split-media">
+        <LuggageArt />
+      </div>
+      <div class="split-copy">
+        <span class="eyebrow">Van espaciosa</span>
+        <h2 id="van-title">Especial para pasajeros con mucho equipaje</h2>
+        <p class="lead">Familias, grupos y viajeros con valijas grandes viajan juntos en un solo vehículo, sin tener que pedir dos autos.</p>
+        <ul class="ticks">
+          <li><Icon name="shield" /><p><b>Confort y seguridad.</b> <span>Vehículos limpios y choferes responsables.</span></p></li>
+          <li><Icon name="clock" /><p><b>Puntualidad.</b> <span>Responsabilidad, llegás a tiempo a tu vuelo.</span></p></li>
+          <li><Icon name="luggage" /><p><b>Todo tu equipaje.</b> <span>Valijas, cochecitos y bolsos en la misma van.</span></p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--sky)" aria-labelledby="pasos-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Cómo reservar</span>
+        <h2 id="pasos-title">Tu traslado listo en tres pasos</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Escribinos</h3><p>Mandanos por WhatsApp la fecha, el horario, la dirección y cuántos viajan.</p></li>
+        <li><h3>Confirmamos</h3><p>Te pasamos el precio y reservamos la unidad que necesitás.</p></li>
+        <li><h3>Viajás tranquilo</h3><p>El chofer te espera a la hora pactada y te lleva puerta a puerta.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="reservar" aria-labelledby="reservar-title">
+    <div class="wrap"><BookingForm /></div>
+  </section>
+
+  <section class="section" id="preguntas" aria-labelledby="faq-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 id="faq-title">Lo que más nos consultan</h2>
+      </div>
+      <Faq items={faqs} />
+    </div>
+  </section>
+</Base>

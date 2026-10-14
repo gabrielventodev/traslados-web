@@ -1,0 +1,31 @@
+---
+import { waLink } from '../data/site.js';
+// Distancias y tiempos aproximados al Obelisco; dependen del tránsito y la hora.
+const routes = [
+  { code: 'EZE', from: 'Aeropuerto Ezeiza', to: 'Capital Federal (Obelisco)', km: '35 km', time: '40 a 60 min' },
+  { code: 'AEP', from: 'Aeroparque', to: 'Capital Federal (Obelisco)', km: '7 km', time: '15 a 25 min' },
+  { code: 'EZE', from: 'Aeropuerto Ezeiza', to: 'Aeroparque (conexión)', km: '45 km', time: '50 a 75 min' },
+  { code: 'EZE', from: 'Aeropuerto Ezeiza', to: 'Zona Norte, Oeste y Sur', km: 'Consultar', time: 'Según destino' },
+  { code: 'AEP', from: 'Aeroparque', to: 'Zona Norte, Oeste y Sur', km: 'Consultar', time: 'Según destino' },
+];
+---
+<div class="board-scroll">
+  <table class="board">
+    <caption class="sr-only">Rutas frecuentes de traslado, distancia y tiempo aproximado</caption>
+    <thead>
+      <tr><th scope="col">Desde</th><th scope="col">Hacia</th><th scope="col">Distancia</th><th scope="col">Tiempo aprox.</th><th scope="col"><span class="sr-only">Reservar</span></th></tr>
+    </thead>
+    <tbody>
+      {routes.map((r) => (
+        <tr>
+          <td><span class="code">{r.code}</span><span class="place">{r.from}</span></td>
+          <td class="place">{r.to}</td>
+          <td>{r.km}</td>
+          <td>{r.time}</td>
+          <td><a href={waLink(`Hola! Quiero cotizar un traslado ${r.from} a ${r.to}.`)} rel="noopener" target="_blank">Cotizar →</a></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+<p class="board-note">Tiempos estimados según tránsito habitual. El viaje es ida o vuelta, también al revés: de tu casa u hotel al aeropuerto.</p>

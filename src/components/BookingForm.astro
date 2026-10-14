@@ -1,0 +1,99 @@
+---
+import Icon from './Icon.astro';
+import { BUSINESS } from '../data/site.js';
+interface Props { preset?: 'ezeiza' | 'aeroparque' | 'silla'; }
+const { preset } = Astro.props;
+---
+<form class="booking" id="form-reserva" data-wa={BUSINESS.whatsapp} novalidate>
+  <div class="section-head" style="margin:0">
+    <span class="eyebrow">Cotizá en 1 minuto</span>
+    <h2 id="reservar-title">Armá tu pedido y envialo por WhatsApp</h2>
+    <p class="lead">Completá lo que sepas. Se abre WhatsApp con el mensaje listo para enviar y te respondemos con el precio.</p>
+  </div>
+  <div class="form-grid">
+    <div class="field">
+      <label for="f-tipo">Servicio</label>
+      <select id="f-tipo" name="tipo">
+        <option selected={preset !== 'aeroparque'}>Hacia o desde Ezeiza</option>
+        <option selected={preset === 'aeroparque'}>Hacia o desde Aeroparque</option>
+        <option>Conexión Ezeiza y Aeroparque</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-sentido">Sentido</label>
+      <select id="f-sentido" name="sentido">
+        <option>Del aeropuerto a mi destino</option>
+        <option>De mi domicilio al aeropuerto</option>
+        <option>Ida y vuelta</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-fecha">Fecha</label>
+      <input id="f-fecha" name="fecha" type="date" />
+    </div>
+    <div class="field">
+      <label for="f-hora">Hora (vuelo o retiro)</label>
+      <input id="f-hora" name="hora" type="time" />
+    </div>
+    <div class="field">
+      <label for="f-direccion">Dirección o barrio</label>
+      <input id="f-direccion" name="direccion" type="text" autocomplete="street-address" placeholder="Ej.: Palermo, hotel en Recoleta" />
+    </div>
+    <div class="field">
+      <label for="f-vuelo">Número de vuelo (opcional)</label>
+      <input id="f-vuelo" name="vuelo" type="text" placeholder="Ej.: AR1303" />
+    </div>
+    <div class="field">
+      <label for="f-pasajeros">Pasajeros</label>
+      <select id="f-pasajeros" name="pasajeros">
+        <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7 o más</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-valijas">Valijas grandes</label>
+      <select id="f-valijas" name="valijas">
+        <option>0</option><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5 o más</option>
+      </select>
+    </div>
+    <fieldset class="field full toggle">
+      <legend>¿Viaja alguien en silla de ruedas?</legend>
+      <label><input type="radio" id="f-silla-no" name="silla" value="No" checked={preset !== 'silla'} /> No</label>
+      <label><input type="radio" id="f-silla-si" name="silla" value="Sí" checked={preset === 'silla'} /> Sí, necesito la van con rampa</label>
+    </fieldset>
+    <div class="field full">
+      <label for="f-nota">Algo más que debamos saber (opcional)</label>
+      <textarea id="f-nota" name="nota" placeholder="Silla de bebé, mascota, paradas extra..."></textarea>
+    </div>
+  </div>
+  <div class="booking-foot">
+    <button class="btn btn-wa" type="submit"><Icon name="whatsapp" /> Enviar pedido por WhatsApp</button>
+    <p>O escribinos directo al <strong>{BUSINESS.phoneDisplay}</strong>.</p>
+  </div>
+</form>
+<script is:inline>
+(function () {
+  var f = document.getElementById('form-reserva');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var d = new FormData(f);
+    var fecha = d.get('fecha');
+    if (fecha) { var p = String(fecha).split('-'); fecha = p[2] + '/' + p[1] + '/' + p[0]; }
+    var lines = [
+      'Hola! Quiero cotizar un traslado:',
+      '• Servicio: ' + d.get('tipo'),
+      '• Sentido: ' + d.get('sentido'),
+      fecha ? '• Fecha: ' + fecha : '',
+      d.get('hora') ? '• Hora: ' + d.get('hora') : '',
+      d.get('direccion') ? '• Dirección: ' + d.get('direccion') : '',
+      d.get('vuelo') ? '• Vuelo: ' + d.get('vuelo') : '',
+      '• Pasajeros: ' + d.get('pasajeros') + ' · Valijas: ' + d.get('valijas'),
+      '• Silla de ruedas: ' + d.get('silla'),
+      d.get('nota') ? '• Nota: ' + d.get('nota') : ''
+    ].filter(Boolean).join('\n');
+    var url = 'https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(lines);
+    var w = window.open(url, '_blank');
+    if (w) w.opener = null; else location.href = url;
+  });
+})();
+</script>

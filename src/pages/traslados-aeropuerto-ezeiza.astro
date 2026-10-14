@@ -1,0 +1,37 @@
+---
+import Landing from '../layouts/Landing.astro';
+import img from '../assets/vans-avion.jpg';
+const faqs = [
+  { q: '¿Cuánto se tarda en llegar a Ezeiza desde Capital Federal?', a: 'Desde el centro de la Ciudad son unos 35 km por la Autopista Riccheri. Con tránsito normal el viaje dura entre 40 y 60 minutos; en hora pico puede tardar más, por eso calculamos el horario de salida con margen.' },
+  { q: '¿A qué hora conviene salir para un vuelo internacional?', a: 'Se recomienda estar en el aeropuerto unas 3 horas antes de un vuelo internacional. Contanos el horario de tu vuelo y te proponemos la hora de retiro.' },
+  { q: '¿Me esperan en el hall de arribos?', a: 'Sí. Coordinamos el punto de encuentro en la terminal de arribos y seguimos el horario de tu vuelo para estar cuando salís.' },
+  { q: '¿Llevan a Ezeiza desde el Gran Buenos Aires?', a: 'Sí, hacemos traslados a Ezeiza desde Capital Federal y desde Zona Norte, Zona Oeste y Zona Sur. Consultanos por tu dirección.' },
+];
+---
+<Landing
+  title="Traslado a Ezeiza en van | Remis al Aeropuerto Internacional"
+  description="Traslado privado al Aeropuerto de Ezeiza (EZE) desde Capital y GBA. Van espaciosa para mucho equipaje y unidad con rampa. Precio cerrado por WhatsApp 11 6621 1059."
+  crumb="Traslados a Ezeiza"
+  eyebrow="Aeropuerto Internacional Ministro Pistarini · EZE"
+  h1="Traslado al Aeropuerto de Ezeiza"
+  intro="Llegá tranquilo a tu vuelo internacional. Te buscamos en tu casa u hotel y te llevamos a Ezeiza en una van espaciosa, con lugar para todo el equipaje de la familia."
+  image={img}
+  imageAlt="Vans de Traslados Aeropuerto junto a un avión en la pista de Ezeiza"
+  facts={[{ label: 'Distancia desde el Obelisco', value: '≈ 35 km' }, { label: 'Tiempo de viaje', value: '40 a 60 min' }, { label: 'Ruta habitual', value: 'Autopista Riccheri' }]}
+  faqs={faqs}
+  waText="Hola! Quiero cotizar un traslado al Aeropuerto de Ezeiza."
+  preset="ezeiza"
+  serviceName="Traslado al Aeropuerto Internacional de Ezeiza"
+>
+  <h2>Remis y transfer a Ezeiza, puerta a puerta</h2>
+  <p>El Aeropuerto Internacional Ministro Pistarini, en Ezeiza, es la puerta de entrada de casi todos los vuelos internacionales a la Argentina. Está a unos 35 km del centro porteño, así que conviene reservar un traslado que conozca el camino y salga con tiempo.</p>
+  <p>Nuestro servicio de traslado a Ezeiza funciona en los dos sentidos: te llevamos desde tu domicilio o tu hotel hasta la terminal de partidas, y te buscamos en arribos cuando volvés de viaje.</p>
+  <h2>¿Por qué viajar en van al aeropuerto?</h2>
+  <ul>
+    <li>Entran varias valijas grandes, bolsos de mano y cochecitos sin apretar a nadie.</li>
+    <li>Viaja toda la familia o el grupo junto, en un solo vehículo.</li>
+    <li>Si alguien usa silla de ruedas, la van con rampa le permite subir sin bajarse de ella.</li>
+  </ul>
+  <h2>Zonas desde donde salimos</h2>
+  <p>Capital Federal (Palermo, Recoleta, Belgrano, Caballito, Microcentro, Puerto Madero y todos los barrios), Zona Norte, Zona Oeste y Zona Sur del Gran Buenos Aires. También hacemos la conexión directa entre Ezeiza y Aeroparque.</p>
+</Landing>
