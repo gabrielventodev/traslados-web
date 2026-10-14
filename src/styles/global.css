@@ -305,4 +305,3 @@ a.sr-only:focus { width: auto; height: auto; clip: auto; z-index: 50; padding: 1
 :root[data-theme="dark"] .credit a { color: #70b5f9; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .credit a { color: #70b5f9; } }
 [id] { scroll-margin-top: 84px; }
-.split-media img.native { max-width: 428px; margin-inline: auto; }
