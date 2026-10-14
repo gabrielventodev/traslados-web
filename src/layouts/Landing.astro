@@ -5,6 +5,7 @@ import Base from './Base.astro';
 import Icon from '../components/Icon.astro';
 import BookingForm from '../components/BookingForm.astro';
 import Faq from '../components/Faq.astro';
+import FlightPath from '../components/FlightPath.astro';
 import { SITE_URL, waLink } from '../data/site.js';
 
 interface Props {
@@ -36,6 +37,7 @@ const service = {
 ---
 <Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: Astro.url.pathname }]} schema={[service]}>
   <section class="hero">
+    <FlightPath />
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <nav class="crumbs" aria-label="Migas de pan"><ol><li><a href="/">Inicio</a></li><li aria-current="page">{p.crumb}</li></ol></nav>
@@ -44,21 +46,25 @@ const service = {
         <p class="lead">{p.intro}</p>
         <div class="hero-ctas">
           <a class="btn btn-wa" href={waLink(p.waText)} rel="noopener" target="_blank"><Icon name="whatsapp" /> Reservar por WhatsApp</a>
-          <a class="btn btn-ghost" href="#reservar">Cotizar mi viaje</a>
+          <a class="btn btn-ghost" href="#reservar">Cotizar mi viaje <span class="arr" aria-hidden="true"><Icon name="arrow-right" /></span></a>
         </div>
       </div>
       <div class="hero-media">
         <div class="photo"><Image src={p.image} alt={p.imageAlt} widths={[480, p.image.width]} sizes="(max-width: 860px) 100vw, 560px" loading="eager" fetchpriority="high" /></div>
+        <div class="badge" aria-hidden="true">
+          <span class="badge-ico"><Icon name="check" /></span>
+          <span>Precio cerrado antes de viajar</span>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap" style="display:grid;gap:40px">
-      <dl class="facts">
+      <dl class="facts reveal">
         {p.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}
       </dl>
-      <div class="prose"><slot /></div>
+      <div class="prose reveal"><slot /></div>
     </div>
   </section>
 
@@ -68,8 +74,10 @@ const service = {
 
   <section class="section" aria-labelledby="faq-title" style="padding-top:0">
     <div class="wrap">
-      <div class="section-head"><span class="eyebrow">Preguntas frecuentes</span><h2 id="faq-title">Dudas sobre este traslado</h2></div>
-      <Faq items={p.faqs} />
+      <Faq items={p.faqs}>
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 id="faq-title">Dudas sobre este traslado</h2>
+      </Faq>
     </div>
   </section>
 </Base>

@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+import { waLink } from '../data/site.js';
 interface Props { items: { q: string; a: string }[]; }
 const { items } = Astro.props;
 const schema = {
@@ -7,12 +9,22 @@ const schema = {
   mainEntity: items.map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })),
 };
 ---
-<div class="faq">
-  {items.map((i, n) => (
-    <details open={n === 0}>
-      <summary>{i.q}</summary>
-      <p>{i.a}</p>
-    </details>
-  ))}
+<div class="faq-layout">
+  <div class="faq-side">
+    <div class="section-head reveal"><slot /></div>
+    <aside class="faq-card reveal" aria-label="Contacto">
+      <h3>¿Otra pregunta?</h3>
+      <p>Escribinos por WhatsApp y te respondemos.</p>
+      <a class="btn btn-wa" href={waLink()} rel="noopener" target="_blank"><Icon name="whatsapp" /> Escribinos</a>
+    </aside>
+  </div>
+  <div class="faq">
+    {items.map((i, n) => (
+      <details class="reveal" open={n === 0}>
+        <summary>{i.q}</summary>
+        <p>{i.a}</p>
+      </details>
+    ))}
+  </div>
 </div>
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />

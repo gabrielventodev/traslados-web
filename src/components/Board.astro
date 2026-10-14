@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { waLink } from '../data/site.js';
 // Distancias y tiempos aproximados al Obelisco; dependen del tránsito y la hora.
 const routes = [
@@ -9,23 +10,29 @@ const routes = [
   { code: 'AEP', from: 'Aeroparque', to: 'Zona Norte, Oeste y Sur', km: 'Consultar', time: 'Según destino' },
 ];
 ---
-<div class="board-scroll">
-  <table class="board">
-    <caption class="sr-only">Rutas frecuentes de traslado, distancia y tiempo aproximado</caption>
-    <thead>
-      <tr><th scope="col">Desde</th><th scope="col">Hacia</th><th scope="col">Distancia</th><th scope="col">Tiempo aprox.</th><th scope="col"><span class="sr-only">Reservar</span></th></tr>
-    </thead>
-    <tbody>
-      {routes.map((r) => (
-        <tr>
-          <td><span class="code">{r.code}</span><span class="place">{r.from}</span></td>
-          <td class="place">{r.to}</td>
-          <td>{r.km}</td>
-          <td>{r.time}</td>
-          <td><a href={waLink(`Hola! Quiero cotizar un traslado ${r.from} a ${r.to}.`)} rel="noopener" target="_blank">Cotizar →</a></td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+<div class="board-panel reveal">
+  <div class="board-top">
+    <span class="board-title"><Icon name="plane" /> Salidas</span>
+    <span class="board-status"><i class="dot" aria-hidden="true"></i> En servicio</span>
+  </div>
+  <div class="board-scroll">
+    <table class="board">
+      <caption class="sr-only">Rutas frecuentes de traslado, distancia y tiempo aproximado</caption>
+      <thead>
+        <tr><th scope="col">Desde</th><th scope="col">Hacia</th><th scope="col">Distancia</th><th scope="col">Tiempo aprox.</th><th scope="col"><span class="sr-only">Reservar</span></th></tr>
+      </thead>
+      <tbody>
+        {routes.map((r) => (
+          <tr>
+            <td><span class="code" role="img" aria-label={r.code}>{[...r.code].map((c) => <span class="flap" aria-hidden="true">{c}</span>)}</span><span class="place">{r.from}</span></td>
+            <td class="place">{r.to}</td>
+            <td class="km">{r.km}</td>
+            <td class="time">{r.time}</td>
+            <td><a class="board-btn" href={waLink(`Hola! Quiero cotizar un traslado ${r.from} a ${r.to}.`)} rel="noopener" target="_blank">Cotizar<span class="sr-only"> traslado de {r.from} a {r.to}</span> <span class="arr" aria-hidden="true"><Icon name="arrow-right" /></span></a></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 </div>
 <p class="board-note">Tiempos estimados según tránsito habitual. El viaje es ida o vuelta, también al revés: de tu casa u hotel al aeropuerto.</p>

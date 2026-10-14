@@ -4,12 +4,27 @@ import { BUSINESS } from '../data/site.js';
 interface Props { preset?: 'ezeiza' | 'aeroparque' | 'silla'; }
 const { preset } = Astro.props;
 ---
-<form class="booking" id="form-reserva" data-wa={BUSINESS.whatsapp} novalidate>
-  <div class="section-head" style="margin:0">
-    <span class="eyebrow">Cotizá en 1 minuto</span>
-    <h2 id="reservar-title">Armá tu pedido y envialo por WhatsApp</h2>
-    <p class="lead">Completá lo que sepas. Se abre WhatsApp con el mensaje listo para enviar y te respondemos con el precio.</p>
+<form class="booking reveal reveal-tall" id="form-reserva" data-wa={BUSINESS.whatsapp} novalidate>
+  <div class="booking-aside">
+    <div class="section-head" style="margin:0">
+      <span class="eyebrow">Cotizá en 1 minuto</span>
+      <h2 id="reservar-title">Armá tu pedido y envialo por WhatsApp</h2>
+      <p class="lead">Completá lo que sepas. Se abre WhatsApp con el mensaje listo para enviar y te respondemos con el precio.</p>
+    </div>
+    <div class="next">
+      <h3>Qué pasa después</h3>
+      <ol>
+        <li>Se abre WhatsApp con tu pedido listo.</li>
+        <li>Te respondemos con el precio cerrado.</li>
+        <li>Confirmás y reservamos la van.</li>
+      </ol>
+    </div>
+    <a class="aside-phone" href={`tel:${BUSINESS.phoneE164}`}>
+      <span class="aside-phone-ico" aria-hidden="true"><Icon name="phone" /></span>
+      <span><small>Llamanos</small><b>{BUSINESS.phoneDisplay}</b></span>
+    </a>
   </div>
+  <div class="booking-main">
   <div class="form-grid">
     <div class="field">
       <label for="f-tipo">Servicio</label>
@@ -57,17 +72,20 @@ const { preset } = Astro.props;
     </div>
     <fieldset class="field full toggle">
       <legend>¿Viaja alguien en silla de ruedas?</legend>
+      <div class="seg">
       <label><input type="radio" id="f-silla-no" name="silla" value="No" checked={preset !== 'silla'} /> No</label>
       <label><input type="radio" id="f-silla-si" name="silla" value="Sí" checked={preset === 'silla'} /> Sí, usamos la rampa de la van</label>
+      </div>
     </fieldset>
     <div class="field full">
       <label for="f-nota">Algo más que debamos saber (opcional)</label>
       <textarea id="f-nota" name="nota" placeholder="Silla de bebé, mascota, paradas extra..."></textarea>
     </div>
   </div>
-  <div class="booking-foot">
+    <div class="booking-foot">
     <button class="btn btn-wa" type="submit"><Icon name="whatsapp" /> Enviar pedido por WhatsApp</button>
     <p>O escribinos directo al <strong>{BUSINESS.phoneDisplay}</strong>.</p>
+    </div>
   </div>
 </form>
 <script is:inline>
