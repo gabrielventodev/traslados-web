@@ -9,7 +9,18 @@ npm run dev      # vista local en http://localhost:4321
 npm run build    # genera la carpeta dist/ para subir al hosting
 ```
 Los datos del negocio (teléfono, WhatsApp, dominio) están en `src/data/site.js`.
-Antes de publicar: cambiar `SITE_URL` por el dominio real y actualizar `public/robots.txt` y `public/llms.txt`.
+## Publicación
+El sitio se publica solo en GitHub Pages cada vez que se sube un cambio a `main` (`.github/workflows/deploy.yml`).
+Dominio: https://trasladosaeropuerto.com.ar (archivo `public/CNAME`).
+
+DNS (en Cloudflare o el proveedor de DNS delegado desde NIC Argentina):
+| Tipo | Nombre | Valor |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | gabrielventodev.github.io |
 
 ## Páginas (una por búsqueda clave)
 | URL | Búsquedas objetivo |

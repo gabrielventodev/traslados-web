@@ -1,8 +1,8 @@
 // Datos del negocio: cambiar acá y se actualiza todo el sitio.
-// Publicado en GitHub Pages (https://gabrielventodev.github.io/traslados-web/).
-// Con dominio propio: SITE_ORIGIN = 'https://dominio' y BASE = ''.
-export const SITE_ORIGIN = 'https://gabrielventodev.github.io';
-export const BASE = '/traslados-web';
+// Publicado en GitHub Pages con dominio propio (archivo public/CNAME).
+// Sin dominio propio sería: SITE_ORIGIN = 'https://gabrielventodev.github.io' y BASE = '/traslados-web'.
+export const SITE_ORIGIN = 'https://trasladosaeropuerto.com.ar';
+export const BASE = '';
 export const SITE_URL = SITE_ORIGIN + BASE;
 
 // Ruta interna con el prefijo del sitio: url('/traslados-aeroparque/') -> '/traslados-web/traslados-aeroparque/'.
