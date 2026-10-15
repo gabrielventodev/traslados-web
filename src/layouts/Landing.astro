@@ -6,7 +6,7 @@ import Icon from '../components/Icon.astro';
 import BookingForm from '../components/BookingForm.astro';
 import Faq from '../components/Faq.astro';
 import FlightPath from '../components/FlightPath.astro';
-import { SITE_URL, url, waLink } from '../data/site.js';
+import { SITE_URL, url, waLink, SERVICE_PAGES, ZONE_PAGES, GUIDE_PAGES } from '../data/site.js';
 
 interface Props {
   title: string;
@@ -20,8 +20,10 @@ interface Props {
   facts: { label: string; value: string }[];
   faqs: { q: string; a: string }[];
   waText: string;
-  preset: 'ezeiza' | 'aeroparque' | 'silla';
+  preset?: 'ezeiza' | 'aeroparque' | 'conexion' | 'silla';
   serviceName: string;
+  areaServed?: string[];
+  schema?: object[];
 }
 const p = Astro.props;
 const service = {
@@ -31,11 +33,14 @@ const service = {
   serviceType: p.serviceName,
   description: p.description,
   provider: { '@id': `${SITE_URL}/#negocio` },
-  areaServed: 'Buenos Aires, Argentina',
+  areaServed: (p.areaServed ?? ['Ciudad Autónoma de Buenos Aires', 'Gran Buenos Aires']).map((name) => ({ '@type': 'Place', name })),
   url: new URL(Astro.url.pathname, SITE_URL).href,
 };
+const here = Astro.url.pathname;
+const related = [...SERVICE_PAGES, ...ZONE_PAGES.map((z) => ({ ...z, name: `Desde ${z.name}` })), ...GUIDE_PAGES]
+  .filter((pg) => url(pg.path) !== here);
 ---
-<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: Astro.url.pathname }]} schema={[service]}>
+<Base title={p.title} description={p.description} crumbs={[{ name: p.crumb, path: Astro.url.pathname }]} schema={[service, ...(p.schema ?? [])]}>
   <section class="hero">
     <FlightPath />
     <div class="wrap hero-grid">
@@ -65,6 +70,10 @@ const service = {
         {p.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}
       </dl>
       <div class="prose reveal"><slot /></div>
+      <nav class="related reveal" aria-labelledby="related-title">
+        <h2 id="related-title">Otros traslados</h2>
+        <ul>{related.map((pg) => <li><a href={url(pg.path)}>{pg.name}</a></li>)}</ul>
+      </nav>
     </div>
   </section>
 

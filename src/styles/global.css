@@ -563,7 +563,8 @@ p { margin: 0; text-wrap: pretty; }
 .cta-phone { font: 900 italic clamp(1.6rem, 3vw, 2.3rem)/1 var(--f-display); color: var(--on-brand); text-decoration: none; letter-spacing: .01em; }
 .site-footer { position: relative; padding-block: 40px 96px; border-top: 1px solid var(--line); background: var(--surface); }
 .site-footer::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 3px; background: linear-gradient(90deg, var(--brand-2), var(--green)); }
-.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 28px; }
+@media (max-width: 1000px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 .footer-grid > * { min-width: 0; }
 .footer-grid h3 { font-size: 1rem; margin-bottom: 10px; }
 .footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
@@ -630,3 +631,12 @@ a.sr-only:focus { width: auto; height: auto; clip: auto; z-index: 50; padding: 1
 :root[data-theme="dark"] .credit a { color: #70b5f9; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .credit a { color: #70b5f9; } }
 [id] { scroll-margin-top: 84px; }
+
+/* Enlaces internos: "Otros traslados" y zonas */
+.related { display: grid; gap: 14px; }
+.related h2 { font-size: clamp(1.2rem, 1vw + .8rem, 1.5rem); }
+.related ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.related a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; color: var(--navy); font-weight: 700; text-decoration: none; transition: border-color .2s var(--ease), color .2s var(--ease); }
+.related a:hover { border-color: var(--blue); color: var(--blue); }
+.prose a { color: var(--blue); font-weight: 600; }
+.prose ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }

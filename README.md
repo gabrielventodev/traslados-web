@@ -28,11 +28,18 @@ DNS (en Cloudflare o el proveedor de DNS delegado desde NIC Argentina):
 | `/` | traslados aeropuerto Ezeiza y Aeroparque, transfer aeropuerto Buenos Aires |
 | `/traslados-aeropuerto-ezeiza/` | traslado a Ezeiza, remis a Ezeiza, transfer Ezeiza |
 | `/traslados-aeroparque/` | traslado a Aeroparque, conexión Ezeiza Aeroparque |
-| `/traslados-silla-de-ruedas/` | traslado silla de ruedas, transporte personas con discapacidad, van con rampa |
+| `/traslados-silla-de-ruedas/` | traslado silla de ruedas, transporte personas con discapacidad, remis adaptado, taxi para silla de ruedas, van con rampa |
+| `/traslado-ezeiza-aeroparque/` | traslado Ezeiza Aeroparque, transfer entre aeropuertos, cambio de aeropuerto |
+| `/traslados-aeropuerto-zona-norte/` | remis a Ezeiza desde Zona Norte, traslado aeropuerto San Isidro, Tigre, Olivos |
+| `/traslados-aeropuerto-zona-oeste/` | remis a Ezeiza desde Zona Oeste, traslado aeropuerto Morón, Ramos Mejía, Castelar |
+| `/traslados-aeropuerto-zona-sur/` | remis a Ezeiza desde Zona Sur, traslado aeropuerto Lomas, Lanús, Quilmes |
+| `/guia/viajar-en-avion-en-silla-de-ruedas/` | viajar en avión en silla de ruedas, asistencia aerolínea (búsqueda informativa) |
+
+Las páginas de servicio, zona y guía se listan en `src/data/site.js` (`SERVICE_PAGES`, `ZONE_PAGES`, `GUIDE_PAGES`) y de ahí salen el pie y los enlaces "Otros traslados".
 
 ## SEO incluido
 - Títulos y descripciones únicos, URL canónica, Open Graph y Twitter con imagen 1200x630.
-- Datos estructurados: LocalBusiness + TaxiService, Service, FAQPage, BreadcrumbList.
+- Datos estructurados: LocalBusiness (con zonas atendidas), Service por página, Article en la guía, FAQPage, BreadcrumbList.
 - sitemap-index.xml automático, robots.txt, llms.txt (buscadores con IA), manifest e íconos.
 - Core Web Vitals: CSS en línea, imagen principal con prioridad alta, imágenes responsive, sin JavaScript pesado.
 - Formulario que arma el pedido y lo envía por WhatsApp (sin servidor).

@@ -1,6 +1,7 @@
 ---
 import Landing from '../layouts/Landing.astro';
 import img from '../assets/rampa-silla-2.jpg';
+import { url } from '../data/site.js';
 const faqs = [
   { q: '¿La persona tiene que bajarse de la silla de ruedas?', a: 'No. La van tiene rampa de acceso, así que la persona sube y viaja en su propia silla de ruedas, sin traslados incómodos al asiento.' },
   { q: '¿Pueden viajar acompañantes?', a: 'Sí. Hay asientos para acompañantes y lugar para el equipaje en el mismo vehículo.' },
@@ -9,7 +10,7 @@ const faqs = [
 ];
 ---
 <Landing
-  title="Traslado en silla de ruedas al aeropuerto | Van con rampa"
+  title="Traslado en silla de ruedas en Buenos Aires | Remis con rampa al aeropuerto"
   description="Transporte para personas en silla de ruedas a Ezeiza y Aeroparque en nuestra van con rampa. Subís sin dejar tu silla, con acompañantes y equipaje. WhatsApp 11 6621 1059."
   crumb="Traslados en silla de ruedas"
   eyebrow="Movilidad reducida · Van con rampa"
@@ -32,6 +33,8 @@ const faqs = [
   </ul>
   <h2>Traslados accesibles a Ezeiza y Aeroparque</h2>
   <p>Coordinamos el horario con tu vuelo y te dejamos en la puerta de la terminal, donde podés pedir la asistencia de la aerolínea para el embarque. A la vuelta te esperamos en arribos.</p>
+  <h2>Remis adaptado en Capital y Gran Buenos Aires</h2>
+  <p>Si buscás un remis para silla de ruedas, un taxi adaptado o transporte para personas con discapacidad en Buenos Aires, nuestra van con rampa te busca en Capital Federal, <a href={url('/traslados-aeropuerto-zona-norte/')}>Zona Norte</a>, <a href={url('/traslados-aeropuerto-zona-oeste/')}>Zona Oeste</a> y <a href={url('/traslados-aeropuerto-zona-sur/')}>Zona Sur</a>. ¿Es tu primer viaje en avión con silla? Leé nuestra <a href={url('/guia/viajar-en-avion-en-silla-de-ruedas/')}>guía para viajar en avión en silla de ruedas</a>.</p>
   <h2>Reservá con anticipación</h2>
   <p>Trabajamos con una sola van, así que te recomendamos reservar con al menos 24 horas de anticipación. Escribinos por WhatsApp y te confirmamos disponibilidad.</p>
 </Landing>

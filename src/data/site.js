@@ -21,3 +21,19 @@ export const BUSINESS = {
 
 export const waLink = (text = 'Hola! Quiero consultar por un traslado al aeropuerto.') =>
   `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(text)}`;
+
+// Páginas de servicio y de zona: alimentan el pie, los enlaces "Otros traslados" y llms.txt.
+export const SERVICE_PAGES = [
+  { path: '/traslados-aeropuerto-ezeiza/', name: 'Traslados a Ezeiza' },
+  { path: '/traslados-aeroparque/', name: 'Traslados a Aeroparque' },
+  { path: '/traslado-ezeiza-aeroparque/', name: 'Conexión Ezeiza – Aeroparque' },
+  { path: '/traslados-silla-de-ruedas/', name: 'Traslados en silla de ruedas' },
+];
+export const ZONE_PAGES = [
+  { path: '/traslados-aeropuerto-zona-norte/', name: 'Zona Norte' },
+  { path: '/traslados-aeropuerto-zona-oeste/', name: 'Zona Oeste' },
+  { path: '/traslados-aeropuerto-zona-sur/', name: 'Zona Sur' },
+];
+export const GUIDE_PAGES = [
+  { path: '/guia/viajar-en-avion-en-silla-de-ruedas/', name: 'Guía: viajar en avión en silla de ruedas', short: 'Viajar en avión en silla de ruedas' },
+];

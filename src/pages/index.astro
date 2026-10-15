@@ -6,7 +6,7 @@ import Board from '../components/Board.astro';
 import BookingForm from '../components/BookingForm.astro';
 import Faq from '../components/Faq.astro';
 import FlightPath from '../components/FlightPath.astro';
-import { SITE_URL, url, waLink } from '../data/site.js';
+import { SITE_URL, url, waLink, ZONE_PAGES } from '../data/site.js';
 import vans from '../assets/vans-avion.jpg';
 import rampa from '../assets/rampa-silla.jpg';
 import rampa2 from '../assets/rampa-silla-2.jpg';
@@ -42,7 +42,7 @@ const services = {
 };
 ---
 <Base
-  title="Traslados Aeropuerto Ezeiza y Aeroparque | Van y silla de ruedas"
+  title="Traslados al Aeropuerto Ezeiza y Aeroparque | Remis en van, Buenos Aires"
   description="Traslados privados a Ezeiza y Aeroparque en van espaciosa para mucho equipaje. Con rampa para personas en silla de ruedas. Reservá por WhatsApp 11 6621 1059."
   schema={[services]}
 >
@@ -150,6 +150,22 @@ const services = {
     </div>
   </section>
 
+  <section class="section" id="zonas" aria-labelledby="zonas-title" style="padding-top:0">
+    <div class="wrap" style="display:grid;gap:20px">
+      <div class="section-head reveal" style="margin:0">
+        <span class="eyebrow">Zonas</span>
+        <h2 id="zonas-title">¿Desde dónde salís?</h2>
+        <p class="lead">Te buscamos en cualquier barrio de Capital Federal (Palermo, Recoleta, Belgrano, Caballito, Microcentro, Puerto Madero y todos los demás) y en el Gran Buenos Aires.</p>
+      </div>
+      <nav class="related reveal" aria-label="Traslados por zona">
+        <ul>
+          {ZONE_PAGES.map((z) => <li><a href={url(z.path)}>Traslados desde {z.name}</a></li>)}
+          <li><a href={url('/traslado-ezeiza-aeroparque/')}>Conexión Ezeiza – Aeroparque</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
   <section class="access-band section" aria-labelledby="accesible-title">
     <div class="wrap split">
       <div class="split-media media-blue reveal">
@@ -165,6 +181,7 @@ const services = {
           <li><span class="tile" aria-hidden="true"><Icon name="check" /></span><p><b>Ayuda del chofer.</b> <span>Te asistimos al subir, al bajar y con el equipaje.</span></p></li>
           <li><span class="tile" aria-hidden="true"><Icon name="check" /></span><p><b>Lugar para acompañantes.</b> <span>La familia viaja junta en el mismo vehículo.</span></p></li>
         </ul>
+        <p><a href={url('/guia/viajar-en-avion-en-silla-de-ruedas/')}>Guía: cómo viajar en avión en silla de ruedas</a></p>
         <div><a class="btn btn-wa" href={waLink('Hola! Necesito un traslado al aeropuerto para una persona en silla de ruedas.')} rel="noopener" target="_blank"><Icon name="whatsapp" /> Consultar traslado accesible</a></div>
       </div>
     </div>
