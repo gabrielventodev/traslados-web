@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { Image } from 'astro:assets';
 import Icon from '../components/Icon.astro';
 import logo from '../assets/logo.jpg';
-import { BUSINESS, SITE_URL, BASE, url, waLink } from '../data/site.js';
+import { BUSINESS, SITE_URL, BASE, url, waLink, SERVICE_PAGES, ZONE_PAGES, GUIDE_PAGES } from '../data/site.js';
 
 interface Crumb { name: string; path: string; }
 interface Props {
@@ -12,18 +12,20 @@ interface Props {
   schema?: object[];
   crumbs?: Crumb[];
   ogImage?: string;
+  noindex?: boolean;
 }
-const { title, description, schema = [], crumbs = [], ogImage = url('/og-traslados-aeropuerto.jpg') } = Astro.props;
+const { title, description, schema = [], crumbs = [], ogImage = url('/og-traslados-aeropuerto.jpg'), noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE_URL).href;
 const ogUrl = new URL(ogImage, SITE_URL).href;
 
 const orgId = `${SITE_URL}/#negocio`;
 const business = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'TaxiService'],
+  '@type': 'LocalBusiness',
   '@id': orgId,
   name: BUSINESS.name,
   slogan: BUSINESS.slogan,
+  description: 'Traslados privados al Aeropuerto de Ezeiza y Aeroparque en Buenos Aires, en una van espaciosa para mucho equipaje y con rampa para personas en silla de ruedas.',
   url: `${SITE_URL}/`,
   logo: `${SITE_URL}/icon-512.png`,
   image: ogUrl,
@@ -34,8 +36,16 @@ const business = {
   areaServed: [
     { '@type': 'City', name: 'Ciudad Autónoma de Buenos Aires' },
     { '@type': 'AdministrativeArea', name: 'Gran Buenos Aires' },
+    { '@type': 'AdministrativeArea', name: 'Zona Norte del Gran Buenos Aires' },
+    { '@type': 'AdministrativeArea', name: 'Zona Oeste del Gran Buenos Aires' },
+    { '@type': 'AdministrativeArea', name: 'Zona Sur del Gran Buenos Aires' },
     { '@type': 'Airport', name: 'Aeropuerto Internacional Ministro Pistarini (Ezeiza)', iataCode: 'EZE' },
     { '@type': 'Airport', name: 'Aeroparque Internacional Jorge Newbery', iataCode: 'AEP' },
+  ],
+  knowsAbout: ['Traslados al aeropuerto', 'Transfer Ezeiza', 'Transfer Aeroparque', 'Transporte de personas en silla de ruedas', 'Van con rampa'],
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'Rampa para silla de ruedas', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Espacio para mucho equipaje', value: true },
   ],
   contactPoint: { '@type': 'ContactPoint', telephone: BUSINESS.phoneE164, contactType: 'reservations', availableLanguage: ['es'] },
   sameAs: [],
@@ -59,7 +69,7 @@ const path = Astro.url.pathname.slice(BASE.length) || '/';
   <meta name="claude:viewport-fit-sides" content="cover" />
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
   <meta name="theme-color" content="#0f2f6e" />
   <meta name="geo.region" content="AR-C" />
   <meta name="geo.placename" content="Buenos Aires" />
@@ -137,10 +147,16 @@ const path = Astro.url.pathname.slice(BASE.length) || '/';
         <div>
           <h3>Servicios</h3>
           <ul>
-            <li><a href={url('/traslados-aeropuerto-ezeiza/')}>Traslados a Ezeiza</a></li>
-            <li><a href={url('/traslados-aeroparque/')}>Traslados a Aeroparque</a></li>
-            <li><a href={url('/traslados-silla-de-ruedas/')}>Traslados en silla de ruedas</a></li>
+            {SERVICE_PAGES.map((pg) => <li><a href={url(pg.path)}>{pg.name}</a></li>)}
             <li><a href={path === '/' ? '#preguntas' : url('/#preguntas')}>Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Zonas y guías</h3>
+          <ul>
+            {ZONE_PAGES.map((pg) => <li><a href={url(pg.path)}>Traslados desde {pg.name}</a></li>)}
+            <li><a href={url('/#zonas')}>Capital Federal</a></li>
+            {GUIDE_PAGES.map((pg) => <li><a href={url(pg.path)}>{pg.short}</a></li>)}
           </ul>
         </div>
         <div>

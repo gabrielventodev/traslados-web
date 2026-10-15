@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { BUSINESS } from '../data/site.js';
-interface Props { preset?: 'ezeiza' | 'aeroparque' | 'silla'; }
+interface Props { preset?: 'ezeiza' | 'aeroparque' | 'conexion' | 'silla'; }
 const { preset } = Astro.props;
 ---
 <form class="booking reveal reveal-tall" id="form-reserva" data-wa={BUSINESS.whatsapp} novalidate>
@@ -29,9 +29,9 @@ const { preset } = Astro.props;
     <div class="field">
       <label for="f-tipo">Servicio</label>
       <select id="f-tipo" name="tipo">
-        <option selected={preset !== 'aeroparque'}>Hacia o desde Ezeiza</option>
+        <option selected={preset !== 'aeroparque' && preset !== 'conexion'}>Hacia o desde Ezeiza</option>
         <option selected={preset === 'aeroparque'}>Hacia o desde Aeroparque</option>
-        <option>Conexión Ezeiza y Aeroparque</option>
+        <option selected={preset === 'conexion'}>Conexión Ezeiza y Aeroparque</option>
       </select>
     </div>
     <div class="field">

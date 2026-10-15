@@ -1,6 +1,7 @@
 ---
 import Landing from '../layouts/Landing.astro';
 import img from '../assets/vans-avion.jpg';
+import { url } from '../data/site.js';
 const faqs = [
   { q: '¿Cuánto se tarda en llegar a Ezeiza desde Capital Federal?', a: 'Desde el centro de la Ciudad son unos 35 km por la Autopista Riccheri. Con tránsito normal el viaje dura entre 40 y 60 minutos; en hora pico puede tardar más, por eso calculamos el horario de salida con margen.' },
   { q: '¿A qué hora conviene salir para un vuelo internacional?', a: 'Se recomienda estar en el aeropuerto unas 3 horas antes de un vuelo internacional. Contanos el horario de tu vuelo y te proponemos la hora de retiro.' },
@@ -9,7 +10,7 @@ const faqs = [
 ];
 ---
 <Landing
-  title="Traslado a Ezeiza en van | Remis al Aeropuerto Internacional"
+  title="Traslado a Ezeiza | Remis y transfer en van al Aeropuerto Internacional"
   description="Traslado privado al Aeropuerto de Ezeiza (EZE) desde Capital y GBA. Van espaciosa para mucho equipaje y con rampa para silla de ruedas. Precio cerrado por WhatsApp 11 6621 1059."
   crumb="Traslados a Ezeiza"
   eyebrow="Aeropuerto Internacional Ministro Pistarini · EZE"
@@ -33,5 +34,5 @@ const faqs = [
     <li>Si alguien usa silla de ruedas, la rampa de la van le permite subir sin bajarse de ella.</li>
   </ul>
   <h2>Zonas desde donde salimos</h2>
-  <p>Capital Federal (Palermo, Recoleta, Belgrano, Caballito, Microcentro, Puerto Madero y todos los barrios), Zona Norte, Zona Oeste y Zona Sur del Gran Buenos Aires. También hacemos la conexión directa entre Ezeiza y Aeroparque.</p>
+  <p>Capital Federal (Palermo, Recoleta, Belgrano, Caballito, Microcentro, Puerto Madero y todos los barrios), <a href={url('/traslados-aeropuerto-zona-norte/')}>Zona Norte</a>, <a href={url('/traslados-aeropuerto-zona-oeste/')}>Zona Oeste</a> y <a href={url('/traslados-aeropuerto-zona-sur/')}>Zona Sur</a> del Gran Buenos Aires. También hacemos la <a href={url('/traslado-ezeiza-aeroparque/')}>conexión directa entre Ezeiza y Aeroparque</a>.</p>
 </Landing>

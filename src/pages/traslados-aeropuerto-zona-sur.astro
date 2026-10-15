@@ -1,0 +1,37 @@
+---
+import Landing from '../layouts/Landing.astro';
+import img from '../assets/van-frente.jpg';
+const faqs = [
+  { q: '¿Desde qué localidades de Zona Sur salen?', a: 'Avellaneda, Lanús, Lomas de Zamora, Banfield, Temperley, Adrogué, Monte Grande, Canning, Quilmes y alrededores. Si vivís en otra localidad, escribinos con tu dirección y te confirmamos.' },
+  { q: '¿Cuánto se tarda de Zona Sur a Ezeiza?', a: 'Zona Sur es la más cercana a Ezeiza. Desde Monte Grande o Lomas de Zamora el viaje suele llevar entre 20 y 40 minutos por el Camino de Cintura o la Autopista Riccheri, según el tránsito.' },
+  { q: '¿Y a Aeroparque?', a: 'Desde Avellaneda, Lanús o Quilmes se llega a Aeroparque por el Puente Pueyrredón o la Autopista Buenos Aires–La Plata. El viaje suele llevar entre 30 y 60 minutos según la localidad y la hora.' },
+  { q: '¿Me buscan en el aeropuerto y me llevan a mi casa en Zona Sur?', a: 'Sí. Te esperamos en arribos de Ezeiza o Aeroparque y te dejamos en la puerta de tu casa, con todo el equipaje.' },
+];
+---
+<Landing
+  title="Traslados a Ezeiza y Aeroparque desde Zona Sur | Van puerta a puerta"
+  description="Traslado al aeropuerto desde Lomas de Zamora, Lanús, Avellaneda, Quilmes, Adrogué y Zona Sur. Van espaciosa para mucho equipaje y con rampa para silla de ruedas. WhatsApp 11 6621 1059."
+  crumb="Traslados desde Zona Sur"
+  eyebrow="Zona Sur · Gran Buenos Aires"
+  h1="Traslados al aeropuerto desde Zona Sur"
+  intro="Te buscamos en tu casa de Lomas de Zamora, Lanús, Avellaneda, Quilmes, Adrogué o cualquier punto de Zona Sur y te llevamos a Ezeiza o a Aeroparque en una van con lugar para todo el equipaje."
+  image={img}
+  imageAlt="Van plateada para traslados al aeropuerto desde Zona Sur"
+  facts={[{ label: 'A Ezeiza', value: '20 a 40 min' }, { label: 'A Aeroparque', value: '30 a 60 min' }, { label: 'Rutas', value: 'Riccheri y Cintura' }]}
+  faqs={faqs}
+  waText="Hola! Quiero cotizar un traslado al aeropuerto desde Zona Sur."
+  serviceName="Traslado al aeropuerto desde Zona Sur del Gran Buenos Aires"
+  areaServed={['Avellaneda', 'Lanús', 'Lomas de Zamora', 'Banfield', 'Temperley', 'Adrogué', 'Monte Grande', 'Canning', 'Quilmes', 'Zona Sur del Gran Buenos Aires']}
+>
+  <h2>Remis al aeropuerto desde Zona Sur</h2>
+  <p>Zona Sur es la región más cercana al Aeropuerto de Ezeiza: desde Monte Grande, Canning o Lomas de Zamora se llega rápido por el Camino de Cintura o la Autopista Riccheri. Para ir a Aeroparque hay que cruzar a la Ciudad por el Puente Pueyrredón o la Autopista Buenos Aires–La Plata, y ahí el tránsito pesa más.</p>
+  <p>Hacemos traslados desde Avellaneda, Sarandí, Lanús, Remedios de Escalada, Lomas de Zamora, Banfield, Temperley, Adrogué, Monte Grande, Canning, Quilmes, Bernal y alrededores. Te buscamos en la puerta de tu casa y te dejamos en la terminal.</p>
+  <h2>Una van para toda la familia</h2>
+  <ul>
+    <li>Entran valijas grandes, bolsos y cochecitos en un solo viaje.</li>
+    <li>Viajan todos juntos, sin pedir dos autos.</li>
+    <li>La van tiene rampa, así que una persona en silla de ruedas sube sin dejar su silla.</li>
+  </ul>
+  <h2>Volver a casa desde el aeropuerto</h2>
+  <p>Cuando volvés de viaje, seguimos tu vuelo y te esperamos en arribos de Ezeiza o Aeroparque. Te llevamos directo a tu casa en Zona Sur, sin esperas ni filas de taxis.</p>
+</Landing>

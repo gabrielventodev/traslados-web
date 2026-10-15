@@ -1,0 +1,37 @@
+---
+import Landing from '../layouts/Landing.astro';
+import img from '../assets/van-frente.jpg';
+const faqs = [
+  { q: '¿Desde qué localidades de Zona Norte salen?', a: 'Vicente López, Olivos, Martínez, San Isidro, Beccar, San Fernando, Tigre, Nordelta y alrededores. Si vivís en otra localidad, escribinos con tu dirección y te confirmamos.' },
+  { q: '¿Cuánto se tarda de Zona Norte a Ezeiza?', a: 'Depende de la localidad y del tránsito. Desde Vicente López o San Isidro el viaje suele llevar entre 50 y 80 minutos por la General Paz y la Autopista Riccheri. Calculamos la hora de salida con margen según tu vuelo.' },
+  { q: '¿Y a Aeroparque?', a: 'Aeroparque queda cerca de Zona Norte: desde Olivos o San Isidro son unos 20 a 35 minutos por la Panamericana o la Avenida del Libertador, según el horario.' },
+  { q: '¿Me buscan en el aeropuerto y me llevan a mi casa en Zona Norte?', a: 'Sí. Te esperamos en arribos de Ezeiza o Aeroparque y te dejamos en la puerta de tu casa, con todo el equipaje.' },
+];
+---
+<Landing
+  title="Traslados a Ezeiza y Aeroparque desde Zona Norte | Van puerta a puerta"
+  description="Traslado al aeropuerto desde Vicente López, Olivos, San Isidro, Tigre y Zona Norte. Van espaciosa para mucho equipaje y con rampa para silla de ruedas. WhatsApp 11 6621 1059."
+  crumb="Traslados desde Zona Norte"
+  eyebrow="Zona Norte · Gran Buenos Aires"
+  h1="Traslados al aeropuerto desde Zona Norte"
+  intro="Te buscamos en tu casa de Vicente López, Olivos, San Isidro, Tigre o cualquier punto de Zona Norte y te llevamos a Ezeiza o a Aeroparque en una van con lugar para todo el equipaje."
+  image={img}
+  imageAlt="Van plateada para traslados al aeropuerto desde Zona Norte"
+  facts={[{ label: 'A Aeroparque', value: '20 a 35 min' }, { label: 'A Ezeiza', value: '50 a 80 min' }, { label: 'Rutas', value: 'Panamericana y Gral. Paz' }]}
+  faqs={faqs}
+  waText="Hola! Quiero cotizar un traslado al aeropuerto desde Zona Norte."
+  serviceName="Traslado al aeropuerto desde Zona Norte del Gran Buenos Aires"
+  areaServed={['Vicente López', 'Olivos', 'Martínez', 'San Isidro', 'San Fernando', 'Tigre', 'Nordelta', 'Zona Norte del Gran Buenos Aires']}
+>
+  <h2>Remis al aeropuerto desde Zona Norte</h2>
+  <p>Vivir en Zona Norte tiene una ventaja: Aeroparque queda a pocos kilómetros por la Panamericana o la Avenida del Libertador. Ezeiza, en cambio, está del otro lado de la ciudad, y hay que cruzar la General Paz y tomar la Autopista Riccheri. Por eso conviene salir con un traslado que calcule bien los tiempos.</p>
+  <p>Hacemos traslados desde Vicente López, Florida, Olivos, La Lucila, Martínez, Acassuso, San Isidro, Beccar, Victoria, San Fernando, Tigre, Nordelta y alrededores. Te buscamos en la puerta de tu casa y te dejamos en la terminal.</p>
+  <h2>Una van para toda la familia</h2>
+  <ul>
+    <li>Entran valijas grandes, bolsos y cochecitos en un solo viaje.</li>
+    <li>Viajan todos juntos, sin pedir dos autos.</li>
+    <li>La van tiene rampa, así que una persona en silla de ruedas sube sin dejar su silla.</li>
+  </ul>
+  <h2>Volver a casa desde el aeropuerto</h2>
+  <p>Cuando volvés de viaje, seguimos tu vuelo y te esperamos en arribos de Ezeiza o Aeroparque. Te llevamos directo a tu casa en Zona Norte, sin esperas ni filas de taxis.</p>
+</Landing>

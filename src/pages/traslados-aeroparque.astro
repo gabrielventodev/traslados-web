@@ -1,6 +1,7 @@
 ---
 import Landing from '../layouts/Landing.astro';
 import img from '../assets/van-frente.jpg';
+import { url } from '../data/site.js';
 const faqs = [
   { q: '¿Cuánto se tarda en llegar a Aeroparque?', a: 'Aeroparque está sobre la Costanera Norte, a unos 7 km del Obelisco. El viaje desde el centro dura entre 15 y 25 minutos según el tránsito.' },
   { q: '¿Hacen el traslado de Ezeiza a Aeroparque?', a: 'Sí. Si llegás en un vuelo internacional a Ezeiza y seguís en un vuelo de cabotaje desde Aeroparque, te llevamos directo entre los dos aeropuertos. Son unos 45 km.' },
@@ -26,7 +27,7 @@ const faqs = [
   <p>Aeroparque Jorge Newbery es el aeropuerto de la Ciudad de Buenos Aires, junto al Río de la Plata en la Costanera Norte. Desde ahí salen la mayoría de los vuelos de cabotaje hacia Bariloche, Mendoza, Córdoba, Iguazú, Salta y el resto del país, además de vuelos regionales.</p>
   <p>Nuestro traslado a Aeroparque te lleva desde tu casa, oficina u hotel hasta la puerta de la terminal, y te busca en arribos cuando volvés.</p>
   <h2>Conexión entre Ezeiza y Aeroparque</h2>
-  <p>Muchos viajeros llegan del exterior a Ezeiza y siguen viaje desde Aeroparque. Te esperamos en arribos de Ezeiza y te llevamos directo a Aeroparque, con todo tu equipaje en la misma van.</p>
+  <p>Muchos viajeros llegan del exterior a Ezeiza y siguen viaje desde Aeroparque. Te esperamos en arribos de Ezeiza y te llevamos directo a Aeroparque, con todo tu equipaje en la misma van. Más detalles en <a href={url('/traslado-ezeiza-aeroparque/')}>traslado de Ezeiza a Aeroparque</a>.</p>
   <h2>Viajes accesibles</h2>
   <p>Si viajás con una persona en silla de ruedas, avisanos al reservar: la misma van tiene rampa, así que sube sin dejar su silla y viaja junto a sus acompañantes.</p>
 </Landing>

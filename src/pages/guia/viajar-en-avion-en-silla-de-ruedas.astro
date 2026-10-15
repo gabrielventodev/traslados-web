@@ -1,0 +1,58 @@
+---
+import Landing from '../../layouts/Landing.astro';
+import { SITE_URL, url } from '../../data/site.js';
+import img from '../../assets/rampa-silla.jpg';
+
+const title = 'Cómo viajar en avión en silla de ruedas desde Ezeiza o Aeroparque';
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  inLanguage: 'es-AR',
+  datePublished: '2026-10-15',
+  dateModified: '2026-10-15',
+  author: { '@id': `${SITE_URL}/#negocio` },
+  publisher: { '@id': `${SITE_URL}/#negocio` },
+  image: new URL(img.src, SITE_URL).href,
+  mainEntityOfPage: new URL(Astro.url.pathname, SITE_URL).href,
+};
+const faqs = [
+  { q: '¿Cuándo tengo que pedir la asistencia a la aerolínea?', a: 'Lo mejor es pedirla al sacar el pasaje. Muchas aerolíneas piden el aviso con al menos 48 horas de anticipación, así que no lo dejes para el último día.' },
+  { q: '¿Puedo llevar mi propia silla de ruedas?', a: 'Sí. Lo habitual es que la persona use su silla hasta la puerta del avión y ahí la despachen en bodega; te la devuelven al bajar. Confirmá las condiciones con tu aerolínea.' },
+  { q: '¿Qué pasa con las sillas de ruedas eléctricas?', a: 'Las baterías tienen reglas especiales para volar. Pasale a la aerolínea el modelo, el tipo de batería y las medidas de la silla antes del viaje.' },
+  { q: '¿Cómo llego al aeropuerto sin dejar la silla de ruedas?', a: 'Nuestra van tiene rampa: la persona sube en su silla en la puerta de su casa y baja en la puerta de la terminal de Ezeiza o Aeroparque, con acompañantes y equipaje.' },
+];
+---
+<Landing
+  title="Viajar en avión en silla de ruedas: guía para Ezeiza y Aeroparque"
+  description="Qué pedirle a la aerolínea, cuánto antes llegar y cómo ir al aeropuerto sin dejar la silla de ruedas. Guía práctica para viajar desde Ezeiza y Aeroparque."
+  crumb="Guía: viajar en silla de ruedas"
+  eyebrow="Guía práctica · Movilidad reducida"
+  h1={title}
+  intro="Viajar en avión con una persona en silla de ruedas es más simple si se planifica con tiempo. Estos son los pasos, desde que sacás el pasaje hasta que subís al avión."
+  image={img}
+  imageAlt="Chofer ayudando a una persona en silla de ruedas a subir a la van por la rampa"
+  facts={[{ label: 'Aviso a la aerolínea', value: '48 h antes o más' }, { label: 'Llegada (internacional)', value: '3 h antes' }, { label: 'Llegada (cabotaje)', value: '2 h antes' }]}
+  faqs={faqs}
+  waText="Hola! Necesito un traslado al aeropuerto para una persona en silla de ruedas."
+  preset="silla"
+  serviceName="Traslado al aeropuerto para personas en silla de ruedas"
+  schema={[article]}
+>
+  <h2>1. Pedí la asistencia al sacar el pasaje</h2>
+  <p>Las aerolíneas ofrecen asistencia gratuita a pasajeros con movilidad reducida: te acompañan en el check-in, en los controles y hasta el asiento del avión. Para que esté lista, avisá al comprar el pasaje o, como mínimo, con la anticipación que pida tu aerolínea (muchas piden 48 horas).</p>
+  <p>Al pedirla, explicá qué necesita la persona. Las aerolíneas usan códigos internacionales: <strong>WCHR</strong> si puede subir escaleras y caminar dentro del avión pero no distancias largas, <strong>WCHS</strong> si no puede subir escaleras, y <strong>WCHC</strong> si no puede moverse sola y necesita ayuda para llegar al asiento.</p>
+  <h2>2. Prepará la silla de ruedas</h2>
+  <ul>
+    <li>Anotá las medidas y el peso de la silla, y si es plegable.</li>
+    <li>Si es eléctrica, averiguá el tipo de batería: la aerolínea te va a pedir esos datos.</li>
+    <li>Sacá los accesorios sueltos (almohadones, bolsos) y llevalos en la cabina.</li>
+  </ul>
+  <h2>3. Calculá bien la hora de llegada</h2>
+  <p>Para vuelos internacionales se recomienda estar en Ezeiza unas 3 horas antes, y para vuelos de cabotaje en Aeroparque unas 2 horas antes. Con asistencia conviene no llegar justo: el personal de la aerolínea tiene que coordinar el acompañamiento.</p>
+  <h2>4. Llegá al aeropuerto sin dejar la silla</h2>
+  <p>El tramo hasta el aeropuerto suele ser el más complicado: en un auto común hay que pasar a la persona al asiento y plegar la silla. Nuestra <a href={url('/traslados-silla-de-ruedas/')}>van con rampa</a> evita eso: la persona sube en su silla en la puerta de casa y baja en la puerta de la terminal, junto a sus acompañantes y el equipaje.</p>
+  <h2>5. En la terminal</h2>
+  <p>Presentate en el mostrador de check-in de tu aerolínea y avisá que pediste asistencia. A la vuelta, el personal te acompaña hasta el hall de arribos, donde te esperamos para llevarte a casa. Si tenés una conexión entre aeropuertos, mirá el <a href={url('/traslado-ezeiza-aeroparque/')}>traslado de Ezeiza a Aeroparque</a>.</p>
+  <p><small>Esta guía es orientativa. Las condiciones exactas dependen de cada aerolínea: confirmalas antes de viajar.</small></p>
+</Landing>

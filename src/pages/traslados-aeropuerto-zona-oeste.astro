@@ -1,0 +1,37 @@
+---
+import Landing from '../layouts/Landing.astro';
+import img from '../assets/van-frente.jpg';
+const faqs = [
+  { q: '¿Desde qué localidades de Zona Oeste salen?', a: 'Ramos Mejía, Haedo, Morón, Castelar, Ituzaingó, Hurlingham, San Justo, Merlo y alrededores. Si vivís en otra localidad, escribinos con tu dirección y te confirmamos.' },
+  { q: '¿Cuánto se tarda de Zona Oeste a Ezeiza?', a: 'Desde Morón, Ramos Mejía o San Justo el viaje a Ezeiza suele llevar entre 30 y 50 minutos por el Camino de Cintura o la General Paz y la Autopista Riccheri, según el tránsito.' },
+  { q: '¿Y a Aeroparque?', a: 'Desde Zona Oeste a Aeroparque se va por el Acceso Oeste y las autopistas de la Ciudad. El viaje suele llevar entre 40 y 60 minutos según la hora.' },
+  { q: '¿Me buscan en el aeropuerto y me llevan a mi casa en Zona Oeste?', a: 'Sí. Te esperamos en arribos de Ezeiza o Aeroparque y te dejamos en la puerta de tu casa, con todo el equipaje.' },
+];
+---
+<Landing
+  title="Traslados a Ezeiza y Aeroparque desde Zona Oeste | Van puerta a puerta"
+  description="Traslado al aeropuerto desde Morón, Ramos Mejía, Castelar, Ituzaingó y Zona Oeste. Van espaciosa para mucho equipaje y con rampa para silla de ruedas. WhatsApp 11 6621 1059."
+  crumb="Traslados desde Zona Oeste"
+  eyebrow="Zona Oeste · Gran Buenos Aires"
+  h1="Traslados al aeropuerto desde Zona Oeste"
+  intro="Te buscamos en tu casa de Morón, Ramos Mejía, Castelar, Ituzaingó o cualquier punto de Zona Oeste y te llevamos a Ezeiza o a Aeroparque en una van con lugar para todo el equipaje."
+  image={img}
+  imageAlt="Van plateada para traslados al aeropuerto desde Zona Oeste"
+  facts={[{ label: 'A Ezeiza', value: '30 a 50 min' }, { label: 'A Aeroparque', value: '40 a 60 min' }, { label: 'Rutas', value: 'Acceso Oeste y Cintura' }]}
+  faqs={faqs}
+  waText="Hola! Quiero cotizar un traslado al aeropuerto desde Zona Oeste."
+  serviceName="Traslado al aeropuerto desde Zona Oeste del Gran Buenos Aires"
+  areaServed={['Ramos Mejía', 'Haedo', 'Morón', 'Castelar', 'Ituzaingó', 'Hurlingham', 'San Justo', 'Merlo', 'Zona Oeste del Gran Buenos Aires']}
+>
+  <h2>Remis al aeropuerto desde Zona Oeste</h2>
+  <p>Desde Zona Oeste, Ezeiza queda relativamente cerca por el Camino de Cintura, mientras que para llegar a Aeroparque hay que atravesar la ciudad por el Acceso Oeste. En los dos casos el tránsito cambia mucho según la hora, así que calculamos la salida con margen para que llegues tranquilo a tu vuelo.</p>
+  <p>Hacemos traslados desde Ramos Mejía, Haedo, Morón, Castelar, Ituzaingó, Hurlingham, San Justo, Villa Luzuriaga, Merlo y alrededores. Te buscamos en la puerta de tu casa y te dejamos en la terminal.</p>
+  <h2>Una van para toda la familia</h2>
+  <ul>
+    <li>Entran valijas grandes, bolsos y cochecitos en un solo viaje.</li>
+    <li>Viajan todos juntos, sin pedir dos autos.</li>
+    <li>La van tiene rampa, así que una persona en silla de ruedas sube sin dejar su silla.</li>
+  </ul>
+  <h2>Volver a casa desde el aeropuerto</h2>
+  <p>Cuando volvés de viaje, seguimos tu vuelo y te esperamos en arribos de Ezeiza o Aeroparque. Te llevamos directo a tu casa en Zona Oeste, sin esperas ni filas de taxis.</p>
+</Landing>

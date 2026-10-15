@@ -1,0 +1,41 @@
+---
+import Landing from '../layouts/Landing.astro';
+import { url } from '../data/site.js';
+import img from '../assets/vans-avion.jpg';
+const faqs = [
+  { q: '¿Cuánto se tarda de Ezeiza a Aeroparque?', a: 'Son unos 45 km. Con tránsito normal el viaje dura entre 50 y 75 minutos; en hora pico puede tardar más, por eso conviene dejar margen entre los dos vuelos.' },
+  { q: '¿Cuánto tiempo tengo que dejar entre un vuelo internacional y uno de cabotaje?', a: 'Sumá el tiempo de migraciones y retiro de equipaje en Ezeiza, el viaje de alrededor de una hora y las 2 horas de anticipación que se recomiendan para un vuelo de cabotaje en Aeroparque. Si la conexión es ajustada, pasanos los dos números de vuelo y te decimos si llegás.' },
+  { q: '¿Me esperan si el vuelo a Ezeiza se atrasa?', a: 'Sí. Con tu número de vuelo seguimos la llegada real y coordinamos el retiro en el hall de arribos según el horario en que salís.' },
+  { q: 'Me cambiaron el vuelo de aeropuerto, ¿me pueden llevar igual?', a: 'Escribinos por WhatsApp con el horario del nuevo vuelo. Si la van está libre te llevamos directo de un aeropuerto al otro con todo el equipaje.' },
+  { q: '¿También hacen el traslado de Aeroparque a Ezeiza?', a: 'Sí, el servicio funciona en los dos sentidos: de Ezeiza a Aeroparque y de Aeroparque a Ezeiza.' },
+];
+---
+<Landing
+  title="Traslado de Ezeiza a Aeroparque | Transfer entre aeropuertos en van"
+  description="Traslado directo de Ezeiza a Aeroparque y de Aeroparque a Ezeiza. Te esperamos en arribos, con lugar para todo el equipaje y rampa para silla de ruedas. WhatsApp 11 6621 1059."
+  crumb="Conexión Ezeiza – Aeroparque"
+  eyebrow="EZE ⇄ AEP · Conexión entre aeropuertos"
+  h1="Traslado de Ezeiza a Aeroparque"
+  intro="¿Llegás del exterior a Ezeiza y seguís viaje desde Aeroparque? Te esperamos en arribos y te llevamos directo al otro aeropuerto, con todas tus valijas en la misma van."
+  image={img}
+  imageAlt="Van de Traslados Aeropuerto junto a un avión, lista para la conexión entre Ezeiza y Aeroparque"
+  facts={[{ label: 'Distancia', value: '≈ 45 km' }, { label: 'Tiempo de viaje', value: '50 a 75 min' }, { label: 'Sentido', value: 'Ida o vuelta' }]}
+  faqs={faqs}
+  waText="Hola! Necesito un traslado de Ezeiza a Aeroparque (conexión entre vuelos)."
+  preset="conexion"
+  serviceName="Traslado entre el Aeropuerto de Ezeiza y Aeroparque"
+  areaServed={['Aeropuerto Internacional de Ezeiza', 'Aeroparque Jorge Newbery', 'Ciudad Autónoma de Buenos Aires']}
+>
+  <h2>Transfer entre Ezeiza y Aeroparque, sin escalas</h2>
+  <p>Buenos Aires tiene dos aeropuertos: casi todos los vuelos internacionales llegan a Ezeiza, mientras que la mayoría de los vuelos de cabotaje a Bariloche, Mendoza, Córdoba, Salta o Iguazú salen de Aeroparque. Por eso muchos viajeros tienen que cruzar la ciudad entre un vuelo y el otro.</p>
+  <p>Con nuestro traslado de Ezeiza a Aeroparque no tenés que buscar taxi ni cargar valijas en el colectivo: te esperamos en el hall de arribos y te dejamos en la puerta de la terminal de Aeroparque. También hacemos el recorrido inverso, de Aeroparque a Ezeiza.</p>
+  <h2>Cómo es el viaje</h2>
+  <ol>
+    <li>Nos pasás por WhatsApp los dos números de vuelo y cuántos viajan.</li>
+    <li>Seguimos el horario real de llegada a Ezeiza y te esperamos en arribos.</li>
+    <li>Cargamos el equipaje en la van y vamos directo a Aeroparque, a unos 45 km.</li>
+  </ol>
+  <h2>Ideal para familias y viajeros con mucho equipaje</h2>
+  <p>Después de un vuelo largo, lo último que querés es pelear con las valijas. La van es espaciosa: entran valijas grandes, bolsos y cochecitos, y la familia viaja junta. Si alguien usa silla de ruedas, sube por la rampa sin dejar su silla.</p>
+  <p>Si tu destino final es tu casa, mirá también los <a href={url('/traslados-aeropuerto-ezeiza/')}>traslados a Ezeiza</a> y los <a href={url('/traslados-aeroparque/')}>traslados a Aeroparque</a>.</p>
+</Landing>
